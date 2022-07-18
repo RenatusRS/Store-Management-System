@@ -1,0 +1,145 @@
+version: '3'
+
+services:
+  adminer:
+    image: adminer
+    ports:
+      - "8080:8080"
+    networks:
+      - authenticationNetwork
+      - storeNetwork
+
+  authenticationDB:
+    image: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      timeout: 10s
+      retries: 10
+    volumes:
+      - databaseauth:/var/lib/mysql
+    networks:
+      - authenticationNetwork
+
+  authenticationMigration:
+    image: authenticationmigration
+    environment:
+      - DATABASE=authenticationDB
+    networks:
+      - authenticationNetwork
+
+
+  daemon:
+    image: daemon
+    environment:
+      - DATABASE=storeDB
+      - REDIS=redis
+    depends_on:
+      - redis
+      - warehouse
+      - storeMigration
+    networks:
+      - daemonRedis
+      - daemonStoreDB
+
+  storeDB:
+    image: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      timeout: 10s
+      retries: 10
+    volumes:
+      - databasestore:/var/lib/mysql
+    networks:
+      - adminStoreDB
+      - customerStoreDB
+      - daemonStoreDB
+      - storeNetwork
+
+  storeMigration:
+    image: storemigration
+    environment:
+      - DATABASE=storeDB
+      - REDIS=redis
+    networks:
+      - storeNetwork
+
+  authentication:
+    image: authentication
+    environment:
+      - DATABASE=authenticationDB
+    depends_on:
+      - authenticationMigration
+    ports:
+      - "5002:5002"
+    networks:
+      - authenticationNetwork
+
+  admin:
+    image: admin
+    environment:
+      - DATABASE=storeDB
+      - REDIS=redis
+    depends_on:
+      - redis
+      - warehouse
+      - storeMigration
+    ports:
+      - "5001:5001"
+    networks:
+      - adminStoreDB
+
+  customer:
+    image: customer
+    deploy:
+      replicas: 3
+    environment:
+      - DATABASE=storeDB
+      - REDIS=redis
+    depends_on:
+      - redis
+      - warehouse
+      - storeMigration
+    ports:
+      - "5003:5003"
+    networks:
+      - customerStoreDB
+
+  redis:
+    image: redis
+    networks:
+      - daemonRedis
+      - warehouseRedis
+
+  warehouse:
+    image: warehouse
+    deploy:
+      replicas: 3
+    environment:
+      - DATABASE=storeDB
+      - REDIS=redis
+    depends_on:
+      - authentication
+      - redis
+      - storeMigration
+    ports:
+      - "5004:5004"
+    networks:
+      - warehouseRedis
+
+
+volumes:
+  databaseauth:
+  databasestore:
+
+networks:
+  daemonStoreDB:
+  authenticationNetwork:
+  storeNetwork:
+  adminStoreDB:
+  warehouseRedis:
+  daemonRedis:
+  customerStoreDB:
