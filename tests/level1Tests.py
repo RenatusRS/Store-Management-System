@@ -1,28 +1,28 @@
-from utilities import equals;
-from utilities import runTests;
-from utilities import setUpAuthorizationErrorRequest;
-from utilities import setUpAdminHeaders;
-from utilities import setUpUserHeaders;
-from utilities import evaluateSearchTest;
-from utilities import setUpUpdateTest;
-from utilities import updateTestEquals;
-from utilities import setUpOrderTest;
-from utilities import evaluateStatusTest;
-from utilities import evaluateOrderTest;
-from data      import getOrderError0;
-from data      import getOrderError1;
-from data      import getOrderError2;
-from data      import getOrderError3;
-from data      import getOrderError4;
-from data      import getOrderError5;
-from data      import getOrderError6;
-from data      import getOrder0;
-from data      import getOrderStatus0;
-from data      import getSearchResult5;
-from data      import getData2;
-from data      import getOrder1;
-from data      import getOrderStatus1;
-from data      import getSearchResult6;
+from utilities import equals
+from utilities import runTests
+from utilities import setUpAuthorizationErrorRequest
+from utilities import setUpAdminHeaders
+from utilities import setUpUserHeaders
+from utilities import evaluateSearchTest
+from utilities import setUpUpdateTest
+from utilities import updateTestEquals
+from utilities import setUpOrderTest
+from utilities import evaluateStatusTest
+from utilities import evaluateOrderTest
+from data      import getOrderError0
+from data      import getOrderError1
+from data      import getOrderError2
+from data      import getOrderError3
+from data      import getOrderError4
+from data      import getOrderError5
+from data      import getOrderError6
+from data      import getOrder0
+from data      import getOrderStatus0
+from data      import getSearchResult5
+from data      import getData2
+from data      import getOrder1
+from data      import getOrderStatus1
+from data      import getSearchResult6
 
 def runLevel1Tests ( withAuthentication, authenticationAddress, warehouseAddress, customerAddress ):
 
@@ -58,8 +58,8 @@ def runLevel1Tests ( withAuthentication, authenticationAddress, warehouseAddress
 
         ["get", customerAddress + "/status", setUpUserHeaders ( withAuthentication, True, authenticationAddress ), { }, { }, { }, 200, getOrderStatus1 ( ), evaluateStatusTest, 6],
         ["get", customerAddress + "/search", setUpUserHeaders ( withAuthentication, True, authenticationAddress ), { }, { }, { }, 200, getSearchResult6 ( ), evaluateSearchTest, 6],
-    ];
+    ]
 
-    percentage = runTests ( tests );
+    percentage = runTests ( tests )
 
-    return percentage;
+    return percentage

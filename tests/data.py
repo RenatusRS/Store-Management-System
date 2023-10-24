@@ -14,27 +14,27 @@ users = {
         "password"  : "aA123456",
         "isCustomer": False,
     }
-};
+}
 
 isRegistered = {
     True : False,
     False: False
-};
+}
 
 
 def getUser ( isCustomer ):
-    global users;
-    return users[isCustomer];
+    global users
+    return users[isCustomer]
 
 
 def getIsUserRegistered ( isCustomer ):
-    global isRegistered;
-    return isRegistered[isCustomer];
+    global isRegistered
+    return isRegistered[isCustomer]
 
 
 def setIsUserRegistered ( isCustomer, value ):
-    global isRegistered;
-    isRegistered[isCustomer] = value;
+    global isRegistered
+    isRegistered[isCustomer] = value
 
 
 # LEVEL 0 DATA
@@ -50,7 +50,7 @@ getCsvError0 = lambda: "\n".join ( [
     "Category4,Product8,2,15.47",
     "Category0,Product9,4,41.3",
     "Category0|Category1|Category2,Product10,5,17.98",
-] );
+] )
 
 getCsvError1 = lambda: "\n".join ( [
     "Category0,Product0,2,27.34",
@@ -64,7 +64,7 @@ getCsvError1 = lambda: "\n".join ( [
     "Category4,Product8,2,15.47",
     "Category0,Product9,4,41.3",
     "Category0|Category1|Category2,Product10,5,17.98",
-] );
+] )
 
 getCsvError2 = lambda: "\n".join ( [
     "Category0,Product0,2,27.34",
@@ -78,7 +78,7 @@ getCsvError2 = lambda: "\n".join ( [
     "Category4,Product8,2,15.47",
     "Category0,Product9,4,41.3",
     "Category0|Category1|Category2,Product10,5,17.98",
-] );
+] )
 
 getCsvError3 = lambda: "\n".join ( [
     "Category0,Product0,2,27.34",
@@ -92,7 +92,7 @@ getCsvError3 = lambda: "\n".join ( [
     "Category4,Product8,2,15.47",
     "Category0,Product9,4,41.3",
     "Category0|Category1|Category2,Product10,5,17.98",
-] );
+] )
 
 getCsvError4 = lambda: "\n".join ( [
     "Category0,Product0,2,27.34",
@@ -106,7 +106,7 @@ getCsvError4 = lambda: "\n".join ( [
     "Category4,Product8,2,15.47",
     "Category0,Product9,4,41.3",
     "Category0|Category1|Category2,Product10,5,17.98",
-] );
+] )
 
 
 getData0 = lambda: "\n".join ( [
@@ -121,7 +121,7 @@ getData0 = lambda: "\n".join ( [
     "Category4,Product8,2,15.47",
     "Category0,Product9,4,41.3",
     "Category0|Category1|Category2,Product10,5,17.98",
-] );
+] )
 
 getSearchResult0 = lambda: {
     "categories": [
@@ -237,16 +237,16 @@ getSearchResult0 = lambda: {
             "quantity"  : 5
         }
     ]
-};
+}
 
 getData1 = lambda: "\n".join ( [
     "Category1,Product0,2,17.34",
     "Category1,Product1,4,51.44",
     "Category2|Category5,Product2,7,9.89",
     "Category3,Product3,5,7.36",
-] );
+] )
 
-getSearchParameters1 = lambda: "name=0";
+getSearchParameters1 = lambda: "name=0"
 getSearchResult1 = lambda: {
     "categories": [
         "Category0",
@@ -275,9 +275,9 @@ getSearchResult1 = lambda: {
             "quantity"  : 5
         }
     ]
-};
+}
 
-getSearchParameters2 = lambda: "name=2";
+getSearchParameters2 = lambda: "name=2"
 getSearchResult2 = lambda: {
     "categories": [
         "Category2",
@@ -295,9 +295,9 @@ getSearchResult2 = lambda: {
             "quantity"  : 5
         }
     ]
-};
+}
 
-getSearchParameters3 = lambda: "category=5";
+getSearchParameters3 = lambda: "category=5"
 getSearchResult3 = lambda: {
     "categories": [
         "Category5"
@@ -313,20 +313,20 @@ getSearchResult3 = lambda: {
             "quantity"  : 3
         }
     ]
-};
+}
 
-getSearchParameters4 = lambda: "category=5,name=0";
+getSearchParameters4 = lambda: "category=5,name=0"
 getSearchResult4 = lambda: {
     "categories": [],
     "products"  : []
-};
+}
 
 # LEVEL 1 DATA
 getOrderError0 = lambda: {
     "requests": [
         { }
     ]
-};
+}
 
 getOrderError1 = lambda: {
     "requests": [
@@ -338,7 +338,7 @@ getOrderError1 = lambda: {
             "id": 1
         }
     ]
-};
+}
 
 getOrderError2 = lambda: {
     "requests": [
@@ -347,7 +347,7 @@ getOrderError2 = lambda: {
             "quantity": 1
         }
     ]
-};
+}
 
 getOrderError3 = lambda : {
     "requests": [
@@ -356,7 +356,7 @@ getOrderError3 = lambda : {
             "quantity": 1
         }
     ]
-};
+}
 
 getOrderError4 = lambda : {
     "requests": [
@@ -365,7 +365,7 @@ getOrderError4 = lambda : {
             "quantity": "x"
         }
     ]
-};
+}
 
 getOrderError5 = lambda : {
     "requests": [
@@ -374,7 +374,7 @@ getOrderError5 = lambda : {
             "quantity": -1
         }
     ]
-};
+}
 
 getOrderError6 = lambda : {
     "requests": [
@@ -383,7 +383,7 @@ getOrderError6 = lambda : {
             "quantity": 1
         }
     ]
-};
+}
 
 getOrder0 = lambda : {
     "requests": [
@@ -396,7 +396,7 @@ getOrder0 = lambda : {
             "quantity": 3
         }
     ]
-};
+}
 
 getOrderStatus0 = lambda: {
     "orders": [
@@ -426,7 +426,7 @@ getOrderStatus0 = lambda: {
             "timestamp": "2022-05-22 20:32:17"
         }
     ]
-};
+}
 
 getSearchResult5 = lambda: {
     "categories": [
@@ -542,11 +542,11 @@ getSearchResult5 = lambda: {
             "quantity"  : 5
         }
     ]
-};
+}
 
 getData2 = lambda: {
     "Category0,Product1,5,20.44"
-};
+}
 
 getOrder1 = lambda: {
     "requests": [
@@ -559,7 +559,7 @@ getOrder1 = lambda: {
             "quantity": 8
         }
     ]
-};
+}
 
 getOrderStatus1 = lambda: {
     "orders": [
@@ -614,7 +614,7 @@ getOrderStatus1 = lambda: {
             "timestamp": "2022-05-22 21:41:48"
         }
     ]
-};
+}
 
 getSearchResult6 = lambda: {
     "categories": [
@@ -730,7 +730,7 @@ getSearchResult6 = lambda: {
             "quantity"  : 2
         }
     ]
-};
+}
 
 # LEVEL 2 DATA
 getOrder2 = lambda: {
@@ -744,7 +744,7 @@ getOrder2 = lambda: {
             "quantity": 1
         }
     ]
-};
+}
 
 getOrderStatus2 = lambda : {
     "orders": [
@@ -824,7 +824,7 @@ getOrderStatus2 = lambda : {
             "timestamp": "2022-05-22 21:55:53"
         }
     ]
-};
+}
 
 getSearchResult7 = lambda : {
     "categories": [
@@ -940,11 +940,11 @@ getSearchResult7 = lambda : {
             "quantity": 5
         }
     ]
-};
+}
 
 getData3 = lambda : "\n".join ( [
     "Category0,Product1,1,20.44"
-] );
+] )
 
 getOrderStatus3 = lambda : {
     "orders": [
@@ -1024,7 +1024,7 @@ getOrderStatus3 = lambda : {
             "timestamp": "2022-05-22 21:55:53"
         }
     ]
-};
+}
 
 getSearchResult8 = lambda : {
     "categories": [
@@ -1140,12 +1140,12 @@ getSearchResult8 = lambda : {
             "quantity": 5
         }
     ]
-};
+}
 
 getData4 = lambda : "\n".join ( [
     "Category0,Product0,2,20.44",
     "Category0,Product1,1,30.44",
-] );
+] )
 
 getOrderStatus4 = lambda : {
     "orders": [
@@ -1225,7 +1225,7 @@ getOrderStatus4 = lambda : {
             "timestamp": "2022-05-22 21:55:53"
         }
     ]
-};
+}
 
 getSearchResult9 = lambda : {
     "categories": [
@@ -1341,7 +1341,7 @@ getSearchResult9 = lambda : {
             "quantity": 5
         }
     ]
-};
+}
 
 # LEVEL 3 DATA
 getProductStatistics0 = lambda : {
@@ -1362,7 +1362,7 @@ getProductStatistics0 = lambda : {
             "waiting": 0
         }
     ]
-};
+}
 
 getCategoryStatistics0 = lambda : {
     "statistics": [
@@ -1374,7 +1374,7 @@ getCategoryStatistics0 = lambda : {
         "Category5",
         "Category6"
     ]
-};
+}
 
 getOrder3 = lambda: {
     "requests": [
@@ -1387,7 +1387,7 @@ getOrder3 = lambda: {
             "quantity": 22
         }
     ]
-};
+}
 
 getProductStatistics1 = lambda :{
     "statistics": [
@@ -1417,7 +1417,7 @@ getProductStatistics1 = lambda :{
             "waiting": 19
         }
     ]
-};
+}
 
 getCategoryStatistics1 = lambda : {
     "statistics": [
@@ -1429,7 +1429,7 @@ getCategoryStatistics1 = lambda : {
         "Category3",
         "Category4"
     ]
-};
+}
 
 getOrder4 = lambda: {
     "requests": [
@@ -1446,7 +1446,7 @@ getOrder4 = lambda: {
             "quantity": 25
         }
     ]
-};
+}
 
 getProductStatistics2 = lambda : {
     "statistics": [
@@ -1491,7 +1491,7 @@ getProductStatistics2 = lambda : {
             "waiting": 21
         }
     ]
-};
+}
 
 getCategoryStatistics2 = lambda : {
     "statistics": [
@@ -1503,14 +1503,14 @@ getCategoryStatistics2 = lambda : {
         "Category1",
         "Category2"
     ]
-};
+}
 
 getData5 = lambda: "\n".join ( [
     "Category6,Product4,15,10.00",
     "Category3,Product5,19,10.01",
     "Category5,Product6,17,10.02",
     "Category4,Product8,10,10.03",
-] );
+] )
 
 getProductStatistics3 = lambda : {
     "statistics": [
@@ -1555,7 +1555,7 @@ getProductStatistics3 = lambda : {
             "waiting": 2
         }
     ]
-};
+}
 
 getSearchResult10 = lambda : {
     "categories": [
@@ -1671,4 +1671,4 @@ getSearchResult10 = lambda : {
             "quantity": 0
         }
     ]
-};
+}

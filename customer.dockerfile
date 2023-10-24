@@ -14,4 +14,3 @@ RUN pip install -r ./requirements.txt
 ENV PYTHONPATH="/opt/src/application"
 
 ENTRYPOINT ["python", "./customer.py"]
-

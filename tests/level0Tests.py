@@ -1,28 +1,28 @@
-from utilities import equals;
-from utilities import runTests;
-from utilities import setUpAuthorizationErrorRequest;
-from utilities import setUpAdminHeaders;
-from utilities import setUpUserHeaders;
-from utilities import setUpUpdateTest;
-from utilities import updateTestEquals;
-from utilities import setUpSearchTest;
-from utilities import evaluateSearchTest;
-from data      import getCsvError0;
-from data      import getCsvError1;
-from data      import getCsvError2;
-from data      import getCsvError3;
-from data      import getCsvError4;
-from data      import getData0;
-from data      import getSearchResult0;
-from data      import getData1;
-from data      import getSearchParameters1;
-from data      import getSearchResult1;
-from data      import getSearchParameters2;
-from data      import getSearchResult2;
-from data      import getSearchParameters3;
-from data      import getSearchResult3;
-from data      import getSearchParameters4;
-from data      import getSearchResult4;
+from utilities import equals
+from utilities import runTests
+from utilities import setUpAuthorizationErrorRequest
+from utilities import setUpAdminHeaders
+from utilities import setUpUserHeaders
+from utilities import setUpUpdateTest
+from utilities import updateTestEquals
+from utilities import setUpSearchTest
+from utilities import evaluateSearchTest
+from data      import getCsvError0
+from data      import getCsvError1
+from data      import getCsvError2
+from data      import getCsvError3
+from data      import getCsvError4
+from data      import getData0
+from data      import getSearchResult0
+from data      import getData1
+from data      import getSearchParameters1
+from data      import getSearchResult1
+from data      import getSearchParameters2
+from data      import getSearchResult2
+from data      import getSearchParameters3
+from data      import getSearchResult3
+from data      import getSearchParameters4
+from data      import getSearchResult4
 
 def runLevel0Tests ( withAuthentication, authenticationAddress, warehouseAddress, customerAddress ):
 
@@ -58,8 +58,8 @@ def runLevel0Tests ( withAuthentication, authenticationAddress, warehouseAddress
         ["get", customerAddress + "/search", setUpSearchTest ( withAuthentication, authenticationAddress, getSearchParameters2 ( ) ), { }, { }, { }, 200, getSearchResult2 ( ), evaluateSearchTest, 3],
         ["get", customerAddress + "/search", setUpSearchTest ( withAuthentication, authenticationAddress, getSearchParameters3 ( ) ), { }, { }, { }, 200, getSearchResult3 ( ), evaluateSearchTest, 3],
         ["get", customerAddress + "/search", setUpSearchTest ( withAuthentication, authenticationAddress, getSearchParameters4 ( ) ), { }, { }, { }, 200, getSearchResult4 ( ), evaluateSearchTest, 3],
-    ];
+    ]
 
-    percentage = runTests ( tests );
+    percentage = runTests ( tests )
 
-    return percentage;
+    return percentage

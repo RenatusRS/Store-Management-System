@@ -1,26 +1,26 @@
-from utilities import equals;
-from utilities import runTests;
-from utilities import setUpAuthorizationErrorRequest;
-from utilities import setUpAdminHeaders;
-from utilities import setUpUserHeaders;
-from utilities import evaluateProductStatisticsTest;
-from utilities import evaluateCategoryStatisticsTest;
-from utilities import evaluateSearchTest;
-from utilities import setUpOrderTest;
-from utilities import evaluateOrderTest;
-from utilities import setUpUpdateTest;
-from utilities import updateTestEquals;
-from data      import getOrder3;
-from data      import getOrder4;
-from data      import getData5;
-from data      import getProductStatistics0;
-from data      import getCategoryStatistics0;
-from data      import getProductStatistics1;
-from data      import getCategoryStatistics1;
-from data      import getProductStatistics2;
-from data      import getCategoryStatistics2;
-from data      import getProductStatistics3;
-from data      import getSearchResult10;
+from utilities import equals
+from utilities import runTests
+from utilities import setUpAuthorizationErrorRequest
+from utilities import setUpAdminHeaders
+from utilities import setUpUserHeaders
+from utilities import evaluateProductStatisticsTest
+from utilities import evaluateCategoryStatisticsTest
+from utilities import evaluateSearchTest
+from utilities import setUpOrderTest
+from utilities import evaluateOrderTest
+from utilities import setUpUpdateTest
+from utilities import updateTestEquals
+from data      import getOrder3
+from data      import getOrder4
+from data      import getData5
+from data      import getProductStatistics0
+from data      import getCategoryStatistics0
+from data      import getProductStatistics1
+from data      import getCategoryStatistics1
+from data      import getProductStatistics2
+from data      import getCategoryStatistics2
+from data      import getProductStatistics3
+from data      import getSearchResult10
 
 def runLevel3Tests ( withAuthentication, authenticationAddress, warehouseAddress, customerAddress, administratorAddress ):
 
@@ -57,8 +57,8 @@ def runLevel3Tests ( withAuthentication, authenticationAddress, warehouseAddress
         ["get", administratorAddress + "/productStatistics", setUpAdminHeaders ( withAuthentication, authenticationAddress ), { }, { }, { }, 200, getProductStatistics3 ( ), evaluateProductStatisticsTest, 8],
 
         ["get", customerAddress + "/search", setUpUserHeaders ( withAuthentication, True, authenticationAddress ), { }, { }, { }, 200, getSearchResult10 ( ), evaluateSearchTest, 3],
-    ];
+    ]
 
-    percentage = runTests ( tests );
+    percentage = runTests ( tests )
 
-    return percentage;
+    return percentage
