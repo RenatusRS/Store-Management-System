@@ -149,7 +149,7 @@ parser.add_argument(
 def checkArguments(arguments, *keys):
     present = True
     for key in keys:
-        if(key not in arguments):
+        if key not in arguments:
             print(f"Argument {key} is missing.")
 
     return present
@@ -163,13 +163,13 @@ LEVEL3         = 10.
 
 AUTHENTICATION_FACTOR = 0.9
 
-if(__name__ == "__main__"):
+if __name__ == "__main__":
     arguments = parser.parse_args()
 
     total = 0
     max   = 0
 
-    if((arguments.type == "all") or(arguments.type == "authentication")):
+    if (arguments.type == "all") or(arguments.type == "authentication"):
         correct = checkArguments(
             vars(arguments),
             "authentication_address",
@@ -180,7 +180,7 @@ if(__name__ == "__main__"):
             "administrator_role"
         )
 
-        if(correct):
+        if correct:
             print("RUNNING AUTHENTICATION TESTS")
             print(DELIMITER)
 
@@ -201,20 +201,20 @@ if(__name__ == "__main__"):
             print(f"AUTHENTICATION = {authenticationScore} / {AUTHENTICATION}")
             print(DELIMITER)
 
-    if((arguments.type == "all") or(arguments.type >= "level0")):
+    if (arguments.type == "all") or(arguments.type >= "level0"):
         correct = checkArguments(
             vars(arguments),
             "warehouse_address",
             "customer_address"
         )
 
-        if(arguments.with_authentication):
+        if arguments.with_authentication:
             correct &= checkArguments(
                 vars(arguments),
                 "authentication_address"
             )
 
-        if(correct):
+        if correct:
             print("RUNNING LEVEL 0 TESTS")
             print(DELIMITER)
 
@@ -227,7 +227,7 @@ if(__name__ == "__main__"):
 
             level0Score = LEVEL0 * percentage
 
-            if(not arguments.with_authentication):
+            if not arguments.with_authentication:
                 level0Score *= AUTHENTICATION_FACTOR
 
             total += level0Score
@@ -236,20 +236,20 @@ if(__name__ == "__main__"):
             print(f"LEVEL 0 = {level0Score} / {LEVEL0}")
             print(DELIMITER)
 
-    if((arguments.type == "all") or(arguments.type >= "level1")):
+    if (arguments.type == "all") or(arguments.type >= "level1"):
         correct = checkArguments(
             vars(arguments),
             "warehouse_address",
             "customer_address"
         )
 
-        if(arguments.with_authentication):
+        if arguments.with_authentication:
             correct &= checkArguments(
                 vars(arguments),
                 "authentication_address"
             )
 
-        if(correct):
+        if correct:
             print("RUNNING LEVEL 1 TESTS")
             print(DELIMITER)
 
@@ -262,7 +262,7 @@ if(__name__ == "__main__"):
 
             level1Score = LEVEL1 * percentage
 
-            if(not arguments.with_authentication):
+            if not arguments.with_authentication:
                 level1Score *= AUTHENTICATION_FACTOR
 
             total += level1Score
@@ -271,20 +271,20 @@ if(__name__ == "__main__"):
             print(f"LEVEL 1 = {level1Score} / {LEVEL1}")
             print(DELIMITER)
 
-    if((arguments.type == "all") or(arguments.type >= "level2")):
+    if (arguments.type == "all") or(arguments.type >= "level2"):
         correct = checkArguments(
             vars(arguments),
             "warehouse_address",
             "customer_address"
         )
 
-        if(arguments.with_authentication):
+        if arguments.with_authentication:
             correct &= checkArguments(
                 vars(arguments),
                 "authentication_address"
             )
 
-        if(correct):
+        if correct:
             print("RUNNING LEVEL 2 TESTS")
             print(DELIMITER)
 
@@ -297,7 +297,7 @@ if(__name__ == "__main__"):
 
             level2Score = LEVEL2 * percentage
 
-            if(not arguments.with_authentication):
+            if not arguments.with_authentication:
                 level2Score *= AUTHENTICATION_FACTOR
 
             total += level2Score
@@ -306,7 +306,7 @@ if(__name__ == "__main__"):
             print(f"LEVEL 2 = {level2Score} / {LEVEL2}")
             print(DELIMITER)
 
-    if((arguments.type == "all") or(arguments.type >= "level3")):
+    if (arguments.type == "all") or(arguments.type >= "level3"):
         correct = checkArguments(
             vars(arguments),
             "warehouse_address",
@@ -314,13 +314,13 @@ if(__name__ == "__main__"):
             "administrator_address",
         )
 
-        if(arguments.with_authentication):
+        if arguments.with_authentication:
             correct &= checkArguments(
                 vars(arguments),
                 "authentication_address"
             )
 
-        if(correct):
+        if correct:
             print("RUNNING LEVEL 3 TESTS")
             print(DELIMITER)
 
@@ -334,7 +334,7 @@ if(__name__ == "__main__"):
 
             level3Score = LEVEL3 * percentage
 
-            if(not arguments.with_authentication):
+            if not arguments.with_authentication:
                 level3Score *= AUTHENTICATION_FACTOR
 
             total += level3Score

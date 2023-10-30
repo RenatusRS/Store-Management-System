@@ -13,8 +13,8 @@ def recursiveCompare(expected, received, level = 'root', preprocessList = None, 
     message = ""
     same = True
 
-    if(isinstance(expected, dict) and isinstance(received, dict)):
-        if(sorted(expected.keys()) != sorted(received.keys())):
+    if isinstance(expected, dict) and isinstance(received, dict):
+        if sorted(expected.keys()) != sorted(received.keys()):
             expectedKeySet = set(expected.keys())
             receivedKeySet = set(received.keys())
 
@@ -37,12 +37,12 @@ def recursiveCompare(expected, received, level = 'root', preprocessList = None, 
             message += result[0]
             same    &= result[1]
 
-    elif(isinstance(expected, list) and isinstance(received, list)):
-        if(len(expected) != len(received)):
+    elif isinstance(expected, list) and isinstance(received, list):
+        if len(expected) != len(received):
             message += "{:<20} expectedLength={} receivedLength={}\n".format(level, len(expected), len(received))
             same = False
         else:
-            if(preprocessList):
+            if preprocessList:
                (expected, received) = preprocessList(expected, received, level)
 
             for i in range(len(expected)):
@@ -57,10 +57,10 @@ def recursiveCompare(expected, received, level = 'root', preprocessList = None, 
                 message += result[0]
                 same &= result[1]
     else:
-        if(preprocessScalar):
+        if preprocessScalar:
            (expected, received) = preprocessScalar(expected, received, level)
 
-        if(expected != received):
+        if expected != received:
             message += "{:<20} {} != {}\n".format(level, expected, received)
             same = False
 
@@ -82,10 +82,10 @@ def setUpPassFunction(url, headers, data, files):
 
 def setUpAuthorizationErrorRequest(withAuthentication):
     def setUpAuthorizationErrorRequestImplementation(url, headers, data, files):
-        if(not withAuthentication):
-            return(url, None, True)
+        if not withAuthentication:
+            return (url, None, True)
 
-        return(url, None, False)
+        return (url, None, False)
 
     return setUpAuthorizationErrorRequestImplementation
 
@@ -106,7 +106,7 @@ def adminLogin(authenticationAddress, headers):
 
 def setUpAdminHeaders(withAuthentication, authenticationAddress):
     def setUpAdminHeadersImplementation(url, headers, data, files):
-        if(withAuthentication):
+        if withAuthentication:
             adminLogin(authenticationAddress, headers)
         return(url, None, False)
 
@@ -114,7 +114,7 @@ def setUpAdminHeaders(withAuthentication, authenticationAddress):
 
 
 def userLogin(isCustomer, authenticationAddress, headers):
-    if(not getIsUserRegistered(isCustomer)):
+    if not getIsUserRegistered(isCustomer):
         response = request(
                 method  = "post",
                 url     = authenticationAddress + "/register",
@@ -138,7 +138,7 @@ def userLogin(isCustomer, authenticationAddress, headers):
 
 def setUpUserHeaders(withAuthentication, isCustomer, authenticationAddress):
     def setUpUserHeadersImplementation(url, headers, data, files):
-        if(withAuthentication):
+        if withAuthentication:
             userLogin(isCustomer, authenticationAddress, headers)
 
         return(url, "", False)
@@ -152,7 +152,7 @@ def equals(setUpData, expectedResponse, receivedResponse):
 
 def findFirst(list, predicate):
     for item in list:
-        if(predicate(item)):
+        if predicate(item):
             return item
     return None
 
@@ -164,7 +164,7 @@ def createFile(path, content):
 
 def setUpUpdateTest(withAuthentication, authenticationAddress, lines):
     def setUpdateTestImplementation(url, headers, data, files):
-        if(withAuthentication):
+        if withAuthentication:
             userLogin(False, authenticationAddress, headers)
 
         createFile(PATH, lines)
@@ -181,7 +181,7 @@ def updateTestEquals(setUpData, expectedResponse, receivedResponse):
 
 def setUpSearchTest(withAuthentication, authenticationAddress, parameters):
     def setUpdateErrorTestImplementation(url, headers, data, files):
-        if(withAuthentication):
+        if withAuthentication:
             userLogin(True, authenticationAddress, headers)
 
         return(url + "?" + parameters, "", False)
@@ -198,7 +198,7 @@ def evaluateSearchTest(setUpData, expectedResponse, receivedResponse):
         isProducts   = level == "root.products"
         isCategories =(result != None) or(level == "root.categories")
 
-        if(isProducts):
+        if isProducts:
             sortedExpected = sorted(
                 expected,
                 key = lambda item: item["name"]
@@ -209,7 +209,7 @@ def evaluateSearchTest(setUpData, expectedResponse, receivedResponse):
             )
 
             return(list(sortedExpected), list(sortedReceived))
-        elif(isCategories):
+        elif isCategories:
             sortedExpected = sorted(expected)
             sortedReceived = sorted(received)
 
@@ -225,7 +225,7 @@ def evaluateSearchTest(setUpData, expectedResponse, receivedResponse):
 
         isID = result != None
 
-        if(isID):
+        if isID:
             if(type(received) is int):
                 return(1, 1)
             else:
@@ -240,7 +240,7 @@ def evaluateSearchTest(setUpData, expectedResponse, receivedResponse):
 
 def getEmptySearchResults(withAuthentication, authenticationAddress, buyerAddress):
     headers = { }
-    if(withAuthentication):
+    if withAuthentication:
         userLogin(True, authenticationAddress, headers)
 
     response = request(
@@ -254,7 +254,7 @@ def getEmptySearchResults(withAuthentication, authenticationAddress, buyerAddres
 
 def setUpOrderTest(withAuthentication, authenticationAddress, buyerAddress):
     def setUpdateErrorTestImplementation(url, headers, data, files):
-        if(withAuthentication):
+        if withAuthentication:
             userLogin(True, authenticationAddress, headers)
 
         searchResult = getEmptySearchResults(withAuthentication, authenticationAddress, buyerAddress)
@@ -285,7 +285,7 @@ def evaluateStatusTest(setUpData, expectedResponse, receivedResponse):
         isProducts   = productsResult != None
         isCategories = categoriesResult != None
 
-        if(isProducts):
+        if isProducts:
             sortedExpected = sorted(
                 expected,
                 key = lambda item: item["name"]
@@ -296,7 +296,7 @@ def evaluateStatusTest(setUpData, expectedResponse, receivedResponse):
             )
 
             return(list(sortedExpected), list(sortedReceived))
-        elif(isCategories):
+        elif isCategories:
             sortedExpected = sorted(expected)
             sortedReceived = sorted(received)
 
@@ -312,7 +312,7 @@ def evaluateStatusTest(setUpData, expectedResponse, receivedResponse):
 
         isTimestamp = result != None
 
-        if(isTimestamp):
+        if isTimestamp:
             try:
                 now          = datetime.datetime.now()
                 receivedTime = parser.parse(received)
@@ -339,7 +339,7 @@ def evaluateProductStatisticsTest(setUpData, expectedResponse, receivedResponse)
     def preprocessList(expected, received, level):
         isStatistics = level == "root.statistics"
 
-        if(isStatistics):
+        if isStatistics:
             sortedExpected = sorted(
                 expected,
                 key = lambda item: item["name"]
@@ -392,7 +392,7 @@ def runTests(tests):
         try:
             (url, setUpData, skipTest) = preparationFunction(url, headers, data, files)
 
-            if(not skipTest):
+            if not skipTest:
                 response = request(
                         method  = method,
                         url     = url,
@@ -406,7 +406,7 @@ def runTests(tests):
 
                 assert response.status_code == expectedStatusCode, f"Invalid status code, expected {expectedStatusCode}, received {response.status_code}"
 
-                if(expectedResponse is not None):
+                if expectedResponse is not None:
                     receivedResponse = response.json()
                 else:
                     expectedResponse = { }
