@@ -22,43 +22,43 @@ from data      import getCategoryStatistics2
 from data      import getProductStatistics3
 from data      import getSearchResult10
 
-def runLevel3Tests ( withAuthentication, authenticationAddress, warehouseAddress, customerAddress, administratorAddress ):
+def runLevel3Tests(withAuthentication, authenticationAddress, warehouseAddress, customerAddress, administratorAddress):
 
     tests = [
         # products statistics error
-        ["get", administratorAddress + "/productStatistics", setUpAuthorizationErrorRequest ( withAuthentication )                , { }, { }, { }, 401, { "msg": "Missing Authorization Header" }, equals, 1],
-        ["get", administratorAddress + "/productStatistics", setUpUserHeaders ( withAuthentication, True, authenticationAddress ) , { }, { }, { }, 401, { "msg": "Missing Authorization Header" }, equals, 1],
-        ["get", administratorAddress + "/productStatistics", setUpUserHeaders ( withAuthentication, False, authenticationAddress ), { }, { }, { }, 401, { "msg": "Missing Authorization Header" }, equals, 1],
+        ["get", administratorAddress + "/productStatistics", setUpAuthorizationErrorRequest(withAuthentication)                , { }, { }, { }, 401, { "msg": "Missing Authorization Header" }, equals, 1],
+        ["get", administratorAddress + "/productStatistics", setUpUserHeaders(withAuthentication, True, authenticationAddress) , { }, { }, { }, 401, { "msg": "Missing Authorization Header" }, equals, 1],
+        ["get", administratorAddress + "/productStatistics", setUpUserHeaders(withAuthentication, False, authenticationAddress), { }, { }, { }, 401, { "msg": "Missing Authorization Header" }, equals, 1],
 
         # category statistics error
-        ["get", administratorAddress + "/categoryStatistics", setUpAuthorizationErrorRequest ( withAuthentication )                , { }, { }, { }, 401, { "msg": "Missing Authorization Header" }, equals, 1],
-        ["get", administratorAddress + "/categoryStatistics", setUpUserHeaders ( withAuthentication, True, authenticationAddress ) , { }, { }, { }, 401, { "msg": "Missing Authorization Header" }, equals, 1],
-        ["get", administratorAddress + "/categoryStatistics", setUpUserHeaders ( withAuthentication, False, authenticationAddress ), { }, { }, { }, 401, { "msg": "Missing Authorization Header" }, equals, 1],
+        ["get", administratorAddress + "/categoryStatistics", setUpAuthorizationErrorRequest(withAuthentication)                , { }, { }, { }, 401, { "msg": "Missing Authorization Header" }, equals, 1],
+        ["get", administratorAddress + "/categoryStatistics", setUpUserHeaders(withAuthentication, True, authenticationAddress) , { }, { }, { }, 401, { "msg": "Missing Authorization Header" }, equals, 1],
+        ["get", administratorAddress + "/categoryStatistics", setUpUserHeaders(withAuthentication, False, authenticationAddress), { }, { }, { }, 401, { "msg": "Missing Authorization Header" }, equals, 1],
 
         # statistics 0
-        ["get", administratorAddress + "/productStatistics" , setUpAdminHeaders ( withAuthentication, authenticationAddress ), { }, { }, { }, 200, getProductStatistics0 ( ) , evaluateProductStatisticsTest , 4],
-        ["get", administratorAddress + "/categoryStatistics", setUpAdminHeaders ( withAuthentication, authenticationAddress ), { }, { }, { }, 200, getCategoryStatistics0 ( ), evaluateCategoryStatisticsTest, 4],
+        ["get", administratorAddress + "/productStatistics" , setUpAdminHeaders(withAuthentication, authenticationAddress), { }, { }, { }, 200, getProductStatistics0() , evaluateProductStatisticsTest , 4],
+        ["get", administratorAddress + "/categoryStatistics", setUpAdminHeaders(withAuthentication, authenticationAddress), { }, { }, { }, 200, getCategoryStatistics0(), evaluateCategoryStatisticsTest, 4],
 
         # statistics 1
-        ["post", customerAddress + "/order", setUpOrderTest ( withAuthentication, authenticationAddress, customerAddress ), { }, getOrder3 ( ), { }, 200, { }, evaluateOrderTest, 1],
+        ["post", customerAddress + "/order", setUpOrderTest(withAuthentication, authenticationAddress, customerAddress), { }, getOrder3(), { }, 200, { }, evaluateOrderTest, 1],
 
-        ["get", administratorAddress + "/productStatistics", setUpAdminHeaders ( withAuthentication, authenticationAddress ), { }, { }, { }, 200, getProductStatistics1 ( ), evaluateProductStatisticsTest, 4.5],
-        ["get", administratorAddress + "/categoryStatistics", setUpAdminHeaders ( withAuthentication, authenticationAddress ), { }, { }, { }, 200, getCategoryStatistics1 ( ), evaluateCategoryStatisticsTest, 4.5],
+        ["get", administratorAddress + "/productStatistics", setUpAdminHeaders(withAuthentication, authenticationAddress), { }, { }, { }, 200, getProductStatistics1(), evaluateProductStatisticsTest, 4.5],
+        ["get", administratorAddress + "/categoryStatistics", setUpAdminHeaders(withAuthentication, authenticationAddress), { }, { }, { }, 200, getCategoryStatistics1(), evaluateCategoryStatisticsTest, 4.5],
 
         # statistics 2
-        ["post", customerAddress + "/order", setUpOrderTest ( withAuthentication, authenticationAddress, customerAddress ), { }, getOrder4 ( ), { }, 200, { }, evaluateOrderTest, 1],
+        ["post", customerAddress + "/order", setUpOrderTest(withAuthentication, authenticationAddress, customerAddress), { }, getOrder4(), { }, 200, { }, evaluateOrderTest, 1],
 
-        ["get", administratorAddress + "/productStatistics", setUpAdminHeaders ( withAuthentication, authenticationAddress ), { }, { }, { }, 200, getProductStatistics2 ( ), evaluateProductStatisticsTest, 4.5],
-        ["get", administratorAddress + "/categoryStatistics", setUpAdminHeaders ( withAuthentication, authenticationAddress ), { }, { }, { }, 200, getCategoryStatistics2 ( ), evaluateCategoryStatisticsTest, 4.5],
+        ["get", administratorAddress + "/productStatistics", setUpAdminHeaders(withAuthentication, authenticationAddress), { }, { }, { }, 200, getProductStatistics2(), evaluateProductStatisticsTest, 4.5],
+        ["get", administratorAddress + "/categoryStatistics", setUpAdminHeaders(withAuthentication, authenticationAddress), { }, { }, { }, 200, getCategoryStatistics2(), evaluateCategoryStatisticsTest, 4.5],
 
         # statistics 3
-        ["post", warehouseAddress + "/update", setUpUpdateTest ( withAuthentication, authenticationAddress, getData5 ( ) ), { }, { }, { }, 200, None, updateTestEquals, 1],
+        ["post", warehouseAddress + "/update", setUpUpdateTest(withAuthentication, authenticationAddress, getData5()), { }, { }, { }, 200, None, updateTestEquals, 1],
 
-        ["get", administratorAddress + "/productStatistics", setUpAdminHeaders ( withAuthentication, authenticationAddress ), { }, { }, { }, 200, getProductStatistics3 ( ), evaluateProductStatisticsTest, 8],
+        ["get", administratorAddress + "/productStatistics", setUpAdminHeaders(withAuthentication, authenticationAddress), { }, { }, { }, 200, getProductStatistics3(), evaluateProductStatisticsTest, 8],
 
-        ["get", customerAddress + "/search", setUpUserHeaders ( withAuthentication, True, authenticationAddress ), { }, { }, { }, 200, getSearchResult10 ( ), evaluateSearchTest, 3],
+        ["get", customerAddress + "/search", setUpUserHeaders(withAuthentication, True, authenticationAddress), { }, { }, { }, 200, getSearchResult10(), evaluateSearchTest, 3],
     ]
 
-    percentage = runTests ( tests )
+    percentage = runTests(tests)
 
     return percentage

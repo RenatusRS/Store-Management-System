@@ -22,23 +22,23 @@ isRegistered = {
 }
 
 
-def getUser ( isCustomer ):
+def getUser(isCustomer):
     global users
     return users[isCustomer]
 
 
-def getIsUserRegistered ( isCustomer ):
+def getIsUserRegistered(isCustomer):
     global isRegistered
     return isRegistered[isCustomer]
 
 
-def setIsUserRegistered ( isCustomer, value ):
+def setIsUserRegistered(isCustomer, value):
     global isRegistered
     isRegistered[isCustomer] = value
 
 
 # LEVEL 0 DATA
-getCsvError0 = lambda: "\n".join ( [
+getCsvError0 = lambda: "\n".join([
     "Category0,Product0,2,27.34",
     "Category0,Product1,5,41.44",
     "Category1|Category2,Product2",
@@ -50,9 +50,9 @@ getCsvError0 = lambda: "\n".join ( [
     "Category4,Product8,2,15.47",
     "Category0,Product9,4,41.3",
     "Category0|Category1|Category2,Product10,5,17.98",
-] )
+])
 
-getCsvError1 = lambda: "\n".join ( [
+getCsvError1 = lambda: "\n".join([
     "Category0,Product0,2,27.34",
     "Category0,Product1,5,41.44",
     "Category1|Category2,Product2,5,29.89",
@@ -64,9 +64,9 @@ getCsvError1 = lambda: "\n".join ( [
     "Category4,Product8,2,15.47",
     "Category0,Product9,4,41.3",
     "Category0|Category1|Category2,Product10,5,17.98",
-] )
+])
 
-getCsvError2 = lambda: "\n".join ( [
+getCsvError2 = lambda: "\n".join([
     "Category0,Product0,2,27.34",
     "Category0,Product1,5,41.44",
     "Category1|Category2,Product2,5,29.89",
@@ -78,9 +78,9 @@ getCsvError2 = lambda: "\n".join ( [
     "Category4,Product8,2,15.47",
     "Category0,Product9,4,41.3",
     "Category0|Category1|Category2,Product10,5,17.98",
-] )
+])
 
-getCsvError3 = lambda: "\n".join ( [
+getCsvError3 = lambda: "\n".join([
     "Category0,Product0,2,27.34",
     "Category0,Product1,5,x",
     "Category1|Category2,Product2,5,29.89",
@@ -92,9 +92,9 @@ getCsvError3 = lambda: "\n".join ( [
     "Category4,Product8,2,15.47",
     "Category0,Product9,4,41.3",
     "Category0|Category1|Category2,Product10,5,17.98",
-] )
+])
 
-getCsvError4 = lambda: "\n".join ( [
+getCsvError4 = lambda: "\n".join([
     "Category0,Product0,2,27.34",
     "Category0,Product1,5,-1.2",
     "Category1|Category2,Product2,5,29.89",
@@ -106,10 +106,10 @@ getCsvError4 = lambda: "\n".join ( [
     "Category4,Product8,2,15.47",
     "Category0,Product9,4,41.3",
     "Category0|Category1|Category2,Product10,5,17.98",
-] )
+])
 
 
-getData0 = lambda: "\n".join ( [
+getData0 = lambda: "\n".join([
     "Category0,Product0,2,27.34",
     "Category0,Product1,5,41.44",
     "Category1|Category2,Product2,5,29.89",
@@ -121,7 +121,7 @@ getData0 = lambda: "\n".join ( [
     "Category4,Product8,2,15.47",
     "Category0,Product9,4,41.3",
     "Category0|Category1|Category2,Product10,5,17.98",
-] )
+])
 
 getSearchResult0 = lambda: {
     "categories": [
@@ -239,12 +239,12 @@ getSearchResult0 = lambda: {
     ]
 }
 
-getData1 = lambda: "\n".join ( [
+getData1 = lambda: "\n".join([
     "Category1,Product0,2,17.34",
     "Category1,Product1,4,51.44",
     "Category2|Category5,Product2,7,9.89",
     "Category3,Product3,5,7.36",
-] )
+])
 
 getSearchParameters1 = lambda: "name=0"
 getSearchResult1 = lambda: {
@@ -942,9 +942,9 @@ getSearchResult7 = lambda : {
     ]
 }
 
-getData3 = lambda : "\n".join ( [
+getData3 = lambda : "\n".join([
     "Category0,Product1,1,20.44"
-] )
+])
 
 getOrderStatus3 = lambda : {
     "orders": [
@@ -1142,10 +1142,10 @@ getSearchResult8 = lambda : {
     ]
 }
 
-getData4 = lambda : "\n".join ( [
+getData4 = lambda : "\n".join([
     "Category0,Product0,2,20.44",
     "Category0,Product1,1,30.44",
-] )
+])
 
 getOrderStatus4 = lambda : {
     "orders": [
@@ -1505,12 +1505,12 @@ getCategoryStatistics2 = lambda : {
     ]
 }
 
-getData5 = lambda: "\n".join ( [
+getData5 = lambda: "\n".join([
     "Category6,Product4,15,10.00",
     "Category3,Product5,19,10.01",
     "Category5,Product6,17,10.02",
     "Category4,Product8,10,10.03",
-] )
+])
 
 getProductStatistics3 = lambda : {
     "statistics": [
