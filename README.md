@@ -1,10 +1,11 @@
 # **Store Management System**
 > Project for **E-Business Infrastructure** / **Infrastruktura za Elektronsko Poslovanje** class.
 
-## **Introduction**
 Web service-based system designed for multi-user functionality, focused on managing a retail store. The system is divided into two main sections, one for managing user accounts and another for handling store operations.
 
-It has been built using **Python** with **Flask** and **SQLAlchemy** libraries and is deployable using **Docker** containers. Configuration files are provided to launch the entire system on a cluster of computers using **Docker Swarm**.
+![image](https://github.com/RenatusRS/IEP-Project/assets/19864929/84682a25-ad11-44a4-85ce-9bb3bae31e32)
+
+It's been built using **Python** with **Flask** and **SQLAlchemy** libraries and is deployable using **Docker** containers. Configuration files are provided to launch the entire system on a cluster of computers using **Docker Swarm**.
 
 ## **Requirements**
 - **Python 3.9+**
