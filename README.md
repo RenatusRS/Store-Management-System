@@ -1,7 +1,7 @@
 # **Store Management System**
 > Project for **E-Business Infrastructure** / **Infrastruktura za Elektronsko Poslovanje** class.
 
-Web service-based system designed for multi-user functionality, focused on managing a retail store. The system is divided into two main sections, one for managing user accounts and another for handling store operations.
+Dockerized web service-based system designed for multi-user functionality, focused on managing a retail store. The system is divided into two main sections, one for managing user accounts and another for handling store operations.
 
 ![image](https://github.com/RenatusRS/IEP-Project/assets/19864929/84682a25-ad11-44a4-85ce-9bb3bae31e32)
 
