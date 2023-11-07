@@ -1,36 +1,47 @@
-**Run Tests**
+# **Store Management System**
+> Project for **E-Business Infrastructure** / **Infrastruktura za Elektronsko Poslovanje** class.
 
-```commandline
-python main.py --type all --with-authentication --authentication-address http://127.0.0.1:5002 --jwt-secret JWT_SECRET_KEY --roles-field role --administrator-role admin --customer-role customer --warehouse-role warehouse --customer-address http://127.0.0.1:5003 --warehouse-address http://127.0.0.1:5004 --administrator-address http://127.0.0.1:5001
-```
+Dockerized web service-based system designed for multi-user functionality, focused on managing a retail store. The system is divided into two main sections, one for managing user accounts and another for handling store operations.
 
-**Swarm Commands**
+![image](https://github.com/RenatusRS/IEP-Project/assets/19864929/84682a25-ad11-44a4-85ce-9bb3bae31e32)
 
-Initialize
+It's been built using **Python** with **Flask** and **SQLAlchemy** libraries and is deployable using **Docker** containers. Configuration files are provided to launch the entire system on a cluster of computers using **Docker Swarm**.
 
-```commandline
+## **Requirements**
+- **Python 3.9+**
+- **Docker 20.10+**
+
+For Python dependencies, refer to the `requirements.txt` file for specific package versions.
+
+## **How-To Run**
+Before running, make sure that ports **8080**, **5001**, **5002**, **5003**, and **5004** are free.
+
+To initialize and run the services, execute the following commands:
+
+```bash
 docker swarm init
-```
-
-Deploy
-
-```commandline
 docker stack deploy --compose-file swarm.yaml swarm
 ```
 
-Test Connection
-
-```commandline
+To check the status of the services:
+```bash
 docker stack services swarm
 ```
 
-Quit
-
-```commandline
+To shut down the system:
+```bash
 docker swarm leave --force
 ```
 
-**Reset Database**
+### **Running Tests**
+To run the tests, execute:
+
+```bash
+python tests/main.py --type all --with-authentication --authentication-address http://127.0.0.1:5002 --jwt-secret JWT_SECRET_KEY --roles-field role --administrator-role admin --customer-role customer --warehouse-role warehouse --customer-address http://127.0.0.1:5003 --warehouse-address http://127.0.0.1:5004 --administrator-address http://127.0.0.1:5001
+```
+
+### **Database Reset Commands**
+If you need to reset the database, execute these SQL commands:
 
 ```sql
 DELETE FROM product_orders;
