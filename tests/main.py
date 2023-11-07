@@ -201,7 +201,7 @@ if __name__ == "__main__":
             print(f"AUTHENTICATION = {authenticationScore} / {AUTHENTICATION}")
             print(DELIMITER)
 
-    if (arguments.type == "all") or(arguments.type >= "level0"):
+    if arguments.type == "all" or arguments.type >= "level0":
         correct = checkArguments(
             vars(arguments),
             "warehouse_address",
@@ -236,7 +236,7 @@ if __name__ == "__main__":
             print(f"LEVEL 0 = {level0Score} / {LEVEL0}")
             print(DELIMITER)
 
-    if (arguments.type == "all") or(arguments.type >= "level1"):
+    if arguments.type == "all" or arguments.type >= "level1":
         correct = checkArguments(
             vars(arguments),
             "warehouse_address",
@@ -271,7 +271,7 @@ if __name__ == "__main__":
             print(f"LEVEL 1 = {level1Score} / {LEVEL1}")
             print(DELIMITER)
 
-    if (arguments.type == "all") or(arguments.type >= "level2"):
+    if arguments.type == "all" or arguments.type >= "level2":
         correct = checkArguments(
             vars(arguments),
             "warehouse_address",
@@ -306,7 +306,7 @@ if __name__ == "__main__":
             print(f"LEVEL 2 = {level2Score} / {LEVEL2}")
             print(DELIMITER)
 
-    if (arguments.type == "all") or(arguments.type >= "level3"):
+    if arguments.type == "all" or arguments.type >= "level3":
         correct = checkArguments(
             vars(arguments),
             "warehouse_address",
