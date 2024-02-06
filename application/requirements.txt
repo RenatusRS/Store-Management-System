@@ -1,6 +1,6 @@
 Flask==2.2.5
 PyMySQL==1.0.2
-cryptography==41.0.6
+cryptography==42.0.0
 flask_jwt_extended==4.1.0
 flask_migrate==2.7.0
 flask_script==2.0.6
